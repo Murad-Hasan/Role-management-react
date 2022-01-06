@@ -46,7 +46,7 @@ class Login extends Component {
   render() {
     const Year = new Date().getFullYear();
     return (
-      <div className="h-screen grid items-center">
+      <div className="h-[80vh] grid items-center">
         <div className="flex items-center justify-center">
           <div className="w-full max-w-md">
             <form className="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4">
