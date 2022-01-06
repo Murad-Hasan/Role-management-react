@@ -1,7 +1,7 @@
 import React from "react";
 import "react-toastify/dist/ReactToastify.css";
 
-const User = () => {
+const UserContainer = () => {
   return (
     <div>
       <h2>User List</h2>
@@ -10,4 +10,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default UserContainer;

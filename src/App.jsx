@@ -3,7 +3,7 @@ import "./App.css";
 // import Login from "./components/auth/Login";
 import Login from "./components/auth/Login";
 import Header from "./components/partials/Header";
-import User from "./views/users/User";
+import UserContainer from "./views/users/UserContainer";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="login" element={<Login />} />
-        <Route path="users" element={<User />} />
+        <Route path="users" element={<UserContainer />} />
         <Route path="home" element={<Login />} />
         <Route path="/" element={<Login />} />
         <Route
