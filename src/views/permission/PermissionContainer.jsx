@@ -1,8 +1,7 @@
 import React from "react";
 import Sidebar from "../../components/partials/Sidebar";
-import UserList from "../../components/users/UserList";
 
-const UserContainer = () => {
+const PermissionContainer = () => {
   return (
     <>
       <section className="bg-gray-800 font-sans leading-normal tracking-normal">
@@ -10,7 +9,7 @@ const UserContainer = () => {
         <main>
           <div className="flex flex-col md:flex-row">
             <Sidebar />
-            <UserList />
+            <h2 className="text-white">permission</h2>
           </div>
         </main>
       </section>
@@ -18,4 +17,4 @@ const UserContainer = () => {
   );
 };
 
-export default UserContainer;
+export default PermissionContainer;

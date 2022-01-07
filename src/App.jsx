@@ -3,6 +3,8 @@ import "./App.css";
 // import Login from "./components/auth/Login";
 import Login from "./components/auth/Login";
 import Header from "./components/partials/Header";
+import PermissionContainer from "./views/permission/PermissionContainer";
+import RoleContainer from "./views/roles/RoleContainer";
 import UserContainer from "./views/users/UserContainer";
 
 function App() {
@@ -12,6 +14,8 @@ function App() {
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="users" element={<UserContainer />} />
+        <Route path="roles" element={<RoleContainer />} />
+        <Route path="permission" element={<PermissionContainer />} />
         <Route path="home" element={<Login />} />
         <Route path="/" element={<Login />} />
         <Route
