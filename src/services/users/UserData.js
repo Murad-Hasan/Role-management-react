@@ -1,18 +1,60 @@
-export default function getUserData () {
+export default function getUserData() {
   return [
     {
-        userName: "murad",
-        password: "1234",
-      },
-      {
-        userName: "hasan",
-        password: "1234",
-      },
-      {
-        userName: "mahamud",
-        password: "1234",
-      }
-  ]
+      userName: "murad",
+      name: "Amh Murad",
+      password: "1234",
+      role: "user",
+      email: null,
+      gender: "male",
+    },
+    {
+      userName: "joy",
+      name: "nazmus joy",
+      password: "1234",
+      role: "user",
+      email: null,
+      gender: "male",
+    },
+    {
+      userName: "anamul",
+      name: "anamul haque",
+      password: "1234",
+      role: "user",
+      email: null,
+      gender: "Female",
+    },
+    {
+      userName: "rakib",
+      name: "rakibul islam",
+      password: "1234",
+      role: "user",
+      email: null,
+      gender: "Female",
+    },
+    {
+      userName: "hasan",
+      name: "Al Mahamud Murad",
+      email: null,
+      password: "1234",
+      role: "admin",
+      gender: "male",
+    },
+    {
+      userName: "mahamud",
+      password: "1234",
+      name: "Murad Hasan",
+      role: "moderator",
+      email: null,
+      gender: "male",
+    },
+    {
+      userName: "tunni",
+      password: "1234",
+      name: "hafiza tunni",
+      role: "moderator",
+      email: null,
+      gender: "Female",
+    },
+  ];
 }
-
-
