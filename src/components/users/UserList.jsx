@@ -52,26 +52,58 @@ const UserList = () => {
               <tbody>
                 {userData.length > 0 &&
                   userData.map((user, index) => {
-                    return (
-                      <tr key={index} className="text-center hover:bg-gray-100">
-                        <td className="border border-gray-300">{index + 1}</td>
-                        <td className="border border-gray-300">{user.name}</td>
-                        <td className="border border-gray-300">
-                          {user.userName}
-                        </td>
-                        <td className="border border-gray-300">
-                          {user.role ? user.role : "---"}
-                        </td>
-                        <td className="border border-gray-300">
-                          <button className="bg-yellow-500 p-2 rounded">
-                            Edit
-                          </button>
-                          <button className="bg-red-700 p-2 rounded ml-1 text-white">
-                            Delate
-                          </button>
-                        </td>
-                      </tr>
-                    );
+                    if (index % 2 === 0) {
+                      return (
+                        <tr key={index} className="text-center bg-gray-100">
+                          <td className="border border-gray-300">
+                            {index + 1}
+                          </td>
+                          <td className="border border-gray-300">
+                            {user.name}
+                          </td>
+                          <td className="border border-gray-300">
+                            {user.userName}
+                          </td>
+                          <td className="border border-gray-300">
+                            {user.role ? user.role : "---"}
+                          </td>
+                          <td className="border border-gray-300">
+                            <button className="bg-yellow-500 p-2 rounded">
+                              Edit
+                            </button>
+                            <button className="bg-red-700 p-2 rounded ml-1 text-white">
+                              Delate
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    }
+                    if (index % 2 === 1) {
+                      return (
+                        <tr key={index} className="text-center">
+                          <td className="border border-gray-300">
+                            {index + 1}
+                          </td>
+                          <td className="border border-gray-300">
+                            {user.name}
+                          </td>
+                          <td className="border border-gray-300">
+                            {user.userName}
+                          </td>
+                          <td className="border border-gray-300">
+                            {user.role ? user.role : "---"}
+                          </td>
+                          <td className="border border-gray-300">
+                            <button className="bg-yellow-500 p-2 rounded">
+                              Edit
+                            </button>
+                            <button className="bg-red-700 p-2 rounded ml-1 text-white">
+                              Delate
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    }
                   })}
               </tbody>
             </table>
