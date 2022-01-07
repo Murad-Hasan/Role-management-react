@@ -4,28 +4,6 @@ import UserSummary from "./UserSummary";
 
 const UserList = () => {
   const userData = getUserData();
-  let admin = [];
-  let users = [];
-  let moderator = [];
-  let maleUser = [];
-  let femaleUser = [];
-  userData.filter((user) => {
-    if (user.role === "admin") {
-      admin.push(user);
-    }
-    if (user.role === "user") {
-      users.push(user);
-    }
-    if (user.role === "moderator") {
-      moderator.push(user);
-    }
-    if (user.gender === "male") {
-      maleUser.push(user);
-    }
-    if (user.gender === "Female") {
-      femaleUser.push(user);
-    }
-  });
   return (
     <section>
       <div
@@ -37,14 +15,7 @@ const UserList = () => {
             <h1 className="font-bold pl-2">UserList</h1>
           </div>
         </div>
-        <UserSummary
-          userData={userData}
-          admin={admin}
-          users={users}
-          moderator={moderator}
-          maleUser={maleUser}
-          femaleUser={femaleUser}
-        />
+        <UserSummary />
         <div className="container mx-auto">
           <div
             id="recipients"
@@ -52,7 +23,7 @@ const UserList = () => {
           >
             <table
               id="example"
-              className="stripe hover"
+              className="hover border-collapse border border-gray-400"
               style={{
                 width: "100%",
                 paddingTop: "1em",
@@ -61,24 +32,37 @@ const UserList = () => {
             >
               <thead>
                 <tr>
-                  <th data-priority="1">Name</th>
-                  <th data-priority="2">User Name</th>
-                  <th data-priority="3">Role</th>
-                  <th data-priority="4">Action</th>
+                  <th className="border border-gray-300" data-priority="1">
+                    No
+                  </th>
+                  <th className="border border-gray-300" data-priority="2">
+                    Name
+                  </th>
+                  <th className="border border-gray-300" data-priority="3">
+                    User Name
+                  </th>
+                  <th className="border border-gray-300" data-priority="4">
+                    Role
+                  </th>
+                  <th className="border border-gray-300" data-priority="5">
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {userData.length > 0 &&
                   userData.map((user, index) => {
                     return (
-                      <tr
-                        key={index}
-                        className="text-center border border-gray-200"
-                      >
-                        <td>{user.name}</td>
-                        <td>{user.userName}</td>
-                        <td>{user.role ? user.role : "---"}</td>
-                        <td>
+                      <tr key={index} className="text-center hover:bg-gray-100">
+                        <td className="border border-gray-300">{index + 1}</td>
+                        <td className="border border-gray-300">{user.name}</td>
+                        <td className="border border-gray-300">
+                          {user.userName}
+                        </td>
+                        <td className="border border-gray-300">
+                          {user.role ? user.role : "---"}
+                        </td>
+                        <td className="border border-gray-300">
                           <button className="bg-yellow-500 p-2 rounded">
                             Edit
                           </button>
