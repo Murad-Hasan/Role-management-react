@@ -1,9 +1,20 @@
 import React from "react";
 import getUserData from "../../services/users/UserData";
 import UserSummary from "./UserSummary";
+import swal from "sweetalert2/dist/sweetalert2.all.min.js";
 
 const UserList = () => {
   const userData = getUserData();
+  const openModal = () => {
+    swal.fire({
+      title: "Sweet!",
+      text: "Modal with a custom image.",
+      imageUrl: "https://unsplash.it/400/200",
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: "Custom image",
+    });
+  };
   return (
     <section>
       <div
@@ -11,8 +22,15 @@ const UserList = () => {
         className="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5"
       >
         <div className="bg-gray-800 pt-3">
-          <div className="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
-            <h1 className="font-bold pl-2">UserList</h1>
+          <div className="rounded-tl-3xl bg-gradient-to-r flex justify-between items-center from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+            <h1 className="font-bold pl-2">User List</h1>
+            <button
+              onClick={openModal}
+              className="p-3 bg-green-500 rounded-md shadow-md shadow-blue-900 active:scale-95"
+            >
+              {" "}
+              <i className="fas fa-plus"></i> Assign Role
+            </button>
           </div>
         </div>
         <UserSummary />
