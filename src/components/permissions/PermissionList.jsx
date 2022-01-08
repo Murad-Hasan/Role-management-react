@@ -1,9 +1,13 @@
-import React from "react";
-import getUserData from "../../services/users/UserData";
-import UserSummary from "./UserSummary";
+import React, { useEffect, useState } from "react";
+import getPermissionMasterData from "../../services/permissions/PermissionMasterData";
+import UserSummary from "../users/UserSummary";
 
-const UserList = () => {
-  const userData = getUserData();
+const PermissionList = () => {
+  const [permission, setPermission] = useState([]);
+  useEffect(() => {
+    setPermission(getPermissionMasterData);
+  }, [setPermission]);
+
   return (
     <section>
       <div
@@ -12,7 +16,7 @@ const UserList = () => {
       >
         <div className="bg-gray-800 pt-3">
           <div className="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
-            <h1 className="font-bold pl-2">UserList</h1>
+            <h1 className="font-bold pl-2">Permission List</h1>
           </div>
         </div>
         <UserSummary />
@@ -39,19 +43,13 @@ const UserList = () => {
                     Name
                   </th>
                   <th className="border border-gray-300" data-priority="3">
-                    User Name
-                  </th>
-                  <th className="border border-gray-300" data-priority="4">
-                    Role
-                  </th>
-                  <th className="border border-gray-300" data-priority="5">
-                    Action
+                    permissions
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {userData.length > 0 &&
-                  userData.map((user, index) => {
+                {permission.length > 0 &&
+                  permission.map((user, index) => {
                     if (index % 2 === 0) {
                       return (
                         <tr key={index} className="text-center bg-gray-100">
@@ -61,12 +59,7 @@ const UserList = () => {
                           <td className="border border-gray-300">
                             {user.name}
                           </td>
-                          <td className="border border-gray-300">
-                            {user.userName}
-                          </td>
-                          <td className="border border-gray-300">
-                            {user.role ? user.role : "---"}
-                          </td>
+
                           <td className="border border-gray-300">
                             <button className="bg-yellow-500 p-2 rounded">
                               Edit
@@ -90,12 +83,7 @@ const UserList = () => {
                           <td className="border border-gray-300">
                             {user.name}
                           </td>
-                          <td className="border border-gray-300">
-                            {user.userName}
-                          </td>
-                          <td className="border border-gray-300">
-                            {user.role ? user.role : "---"}
-                          </td>
+
                           <td className="border border-gray-300">
                             <button className="bg-yellow-500 p-2 rounded">
                               Edit
@@ -108,7 +96,7 @@ const UserList = () => {
                       );
                     }
                   })}
-                {userData.length === 0 && (
+                {permission.length === 0 && (
                   <tr>
                     <td colSpan="5" className="text-center">
                       No data found
@@ -124,4 +112,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default PermissionList;

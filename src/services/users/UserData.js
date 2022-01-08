@@ -1,14 +1,16 @@
 export default function getUserData() {
   return [
     {
+      id: 1,
       userName: "murad",
       name: "Amh Murad",
       password: "1234",
-      role: null,
+      role: "Admin",
       email: null,
       gender: "male",
     },
     {
+      id: 2,
       userName: "joy",
       name: "nazmus joy",
       password: "1234",
@@ -17,6 +19,7 @@ export default function getUserData() {
       gender: "male",
     },
     {
+      id: 3,
       userName: "anamul",
       name: "anamul haque",
       password: "1234",
@@ -25,6 +28,7 @@ export default function getUserData() {
       gender: "Female",
     },
     {
+      id: 4,
       userName: "rakib",
       name: "rakibul islam",
       password: "1234",
@@ -33,6 +37,7 @@ export default function getUserData() {
       gender: "male",
     },
     {
+      id: 5,
       userName: "hillol",
       name: "nasibul islam",
       password: "1234",
@@ -41,26 +46,29 @@ export default function getUserData() {
       gender: "Female",
     },
     {
+      id: 6,
       userName: "hasan",
       name: "Al Mahamud Murad",
       email: null,
       password: "1234",
-      role: "admin",
+      role: "Super Admin",
       gender: "male",
     },
     {
+      id: 7,
       userName: "mahamud",
       password: "1234",
       name: "Murad Hasan",
-      role: "moderator",
+      role: "Moderator",
       email: null,
       gender: "male",
     },
     {
+      id: 8,
       userName: "tunni",
       password: "1234",
       name: "hafiza tunni",
-      role: "moderator",
+      role: "Moderator",
       email: null,
       gender: "Female",
     },

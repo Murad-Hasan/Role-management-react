@@ -8,13 +8,13 @@ export default function getUserSummaryData() {
   let maleUser = [];
   let femaleUser = [];
   userData.filter((user) => {
-    if (user.role === "admin") {
+    if (user.role === "Admin") {
       admin.push(user);
     }
-    if (user.role === "user") {
+    if (user.role === "user" || user.role === null) {
       users.push(user);
     }
-    if (user.role === "moderator") {
+    if (user.role === "Moderator") {
       moderator.push(user);
     }
     if (user.gender === "male") {

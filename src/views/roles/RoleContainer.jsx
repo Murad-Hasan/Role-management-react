@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "../../components/partials/Sidebar";
+import RoleList from "../../components/roles/RoleList";
 
 const RoleContainer = () => {
   return (
@@ -9,7 +10,7 @@ const RoleContainer = () => {
         <main>
           <div className="flex flex-col md:flex-row">
             <Sidebar />
-            <h2 className="text-white">Roles</h2>
+            <RoleList />
           </div>
         </main>
       </section>

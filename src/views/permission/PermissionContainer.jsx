@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "../../components/partials/Sidebar";
+import PermissionList from "../../components/permissions/PermissionList";
 
 const PermissionContainer = () => {
   return (
@@ -9,7 +10,7 @@ const PermissionContainer = () => {
         <main>
           <div className="flex flex-col md:flex-row">
             <Sidebar />
-            <h2 className="text-white">permission</h2>
+            <PermissionList />
           </div>
         </main>
       </section>
