@@ -3,6 +3,7 @@ import getUserData from "../../services/users/UserData";
 export default function getUserSummaryData() {
   const userData = getUserData();
   let admin = [];
+  let superAdmin = [];
   let users = [];
   let moderator = [];
   let maleUser = [];
@@ -10,6 +11,9 @@ export default function getUserSummaryData() {
   userData.filter((user) => {
     if (user.role === "Admin") {
       admin.push(user);
+    }
+    if (user.role === "Super Admin") {
+      superAdmin.push(user);
     }
     if (user.role === "user" || user.role === null) {
       users.push(user);
@@ -32,8 +36,8 @@ export default function getUserSummaryData() {
       cls: "bg-gradient-to-b from-green-200 to-green-100 border-b-4 border-green-600 rounded-lg shadow-xl p-5",
     },
     {
-      tittle: "Users",
-      count: userData.length,
+      tittle: "Super Admin",
+      count: superAdmin.length,
       icon: "fas fa-exchange-alt",
       cls: "bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5",
     },
