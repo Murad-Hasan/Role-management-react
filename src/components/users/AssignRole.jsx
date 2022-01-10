@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import getUserData from "../../services/users/UserData";
 import getRoleMasterData from "../../services/roles/RoleMasterData.js";
 
-const AssignRole = ({ togglePopup, onSubmit }) => {
+const AssignRole = ({ togglePopup, onSubmit}) => {
   const users = getUserData();
   const roles = getRoleMasterData();
 

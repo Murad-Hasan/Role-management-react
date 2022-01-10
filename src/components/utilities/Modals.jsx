@@ -3,7 +3,7 @@ import AssignRole from "../users/AssignRole";
 
 import PopUp from "./PopUp";
 
-const Modals = ({ togglePopup, isOpen, onSubmit}) => {
+const Modals = ({ togglePopup, isOpen, onSubmit, openEditModal }) => {
   return (
     <div>
       <button
@@ -14,8 +14,12 @@ const Modals = ({ togglePopup, isOpen, onSubmit}) => {
       </button>
       {isOpen && (
         <PopUp
-          content={<AssignRole togglePopup={togglePopup} onSubmit={onSubmit} />}
-          togglePopup={togglePopup}
+          content={
+            <AssignRole
+              togglePopup={togglePopup}
+              onSubmit={onSubmit}
+            />
+          }
         />
       )}
     </div>

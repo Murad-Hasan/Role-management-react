@@ -19,12 +19,16 @@ const UserList = () => {
     setUsers(users);
   }, [setUsers]);
 
-  const deleteUser = (id) => {
+  const deleteUser = (e, id) => {
     setUsers(users.filter((user) => user.id !== id));
   };
 
-  const editUserInfo = (user) => {
-    console.log(user);
+  const editUserInfo = (e, user) => {
+    if (e.target.id == "edit") {
+      console.log("edit", user.id);
+    } else if (e.target.id == "delete") {
+      deleteUser(e, user.id);
+    }
   };
 
   return (
@@ -40,7 +44,6 @@ const UserList = () => {
               onSubmit={onSubmitAssignRole}
               isOpen={isOpen}
               togglePopup={togglePopup}
-              editUserInfo={editUserInfo}
             />
           </div>
         </div>
@@ -98,13 +101,15 @@ const UserList = () => {
                           </td>
                           <td className="border border-gray-300">
                             <button
-                              onClick={() => editUserInfo(user)}
+                              id="edit"
+                              onClick={(e) => editUserInfo(e, user)}
                               className="bg-yellow-500 p-2 rounded"
                             >
                               Edit
                             </button>
                             <button
-                              onClick={() => deleteUser(user.id)}
+                              id="delete"
+                              onClick={(e) => deleteUser(e, user.id)}
                               className="bg-red-700 hover:bg-red-900 p-2 rounded ml-1 text-white"
                             >
                               Delate
@@ -133,13 +138,15 @@ const UserList = () => {
                           </td>
                           <td className="border border-gray-300">
                             <button
-                              onClick={() => editUserInfo(user)}
+                              id="edit"
+                              onClick={(e) => editUserInfo(e, user)}
                               className="bg-yellow-500 p-2 rounded"
                             >
                               Edit
                             </button>
                             <button
-                              onClick={() => deleteUser(user.id)}
+                              id="delete"
+                              onClick={(e) => deleteUser(e, user.id)}
                               className="bg-red-700 hover:bg-red-900 p-2 rounded ml-1 text-white"
                             >
                               Delate
