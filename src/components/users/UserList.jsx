@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import getUserData from "../../services/users/UserData";
 import Modals from "../utilities/Modals";
 import UserSummary from "./UserSummary";
 
 const UserList = () => {
-  const userData = getUserData();
+  const [users, setUsers] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
+  const onSubmitAssignRole = (data) => {
+    setUsers([...users, data]);
+  };
+
+  useEffect(() => {
+    const users = getUserData();
+    setUsers(users);
+  }, [setUsers]);
+
   return (
     <section>
       <div
@@ -19,7 +28,11 @@ const UserList = () => {
         <div className="bg-gray-800 pt-3">
           <div className="rounded-tl-3xl bg-gradient-to-r flex justify-between items-center from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
             <h1 className="font-bold pl-2">User List</h1>
-            <Modals isOpen={isOpen} togglePopup={togglePopup} />
+            <Modals
+              onSubmit={onSubmitAssignRole}
+              isOpen={isOpen}
+              togglePopup={togglePopup}
+            />
           </div>
         </div>
         <UserSummary />
@@ -57,8 +70,8 @@ const UserList = () => {
                 </tr>
               </thead>
               <tbody>
-                {userData.length > 0 &&
-                  userData.map((user, index) => {
+                {users.length > 0 &&
+                  users.map((user, index) => {
                     if (index % 2 === 0) {
                       return (
                         <tr key={index} className="text-center bg-gray-100">
@@ -115,7 +128,7 @@ const UserList = () => {
                       );
                     }
                   })}
-                {userData.length === 0 && (
+                {users.length === 0 && (
                   <tr>
                     <td colSpan="5" className="text-center">
                       No data found
