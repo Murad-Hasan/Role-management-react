@@ -18,8 +18,9 @@ const AssignRole = ({ togglePopup, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (user === "" && role == "") {
+    if (user === "" || role == "") {
       alert("Please select a user and role");
+      return false;
     } else {
       const userData = JSON.parse(user);
       const roleData = JSON.parse(role);
@@ -35,6 +36,7 @@ const AssignRole = ({ togglePopup, onSubmit }) => {
       onSubmit(data);
       togglePopup();
     }
+    alert("congratulations, Role Assigned");
   };
   return (
     <div className="text-black">
@@ -54,11 +56,15 @@ const AssignRole = ({ togglePopup, onSubmit }) => {
                 <option value="Please Select a user">
                   Please Select a user
                 </option>
-                {users.map((user, index) => (
-                  <option value={JSON.stringify(user)} key={index}>
-                    {user.name}
-                  </option>
-                ))}
+                {users.map((user, index) => {
+                  if (user.role === "" || user.role === null) {
+                    return (
+                      <option value={JSON.stringify(user)} key={index}>
+                        {user.name}
+                      </option>
+                    );
+                  }
+                })}
               </select>
             </label>
           </div>
