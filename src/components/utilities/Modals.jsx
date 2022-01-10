@@ -3,7 +3,7 @@ import AssignRole from "../users/AssignRole";
 
 import PopUp from "./PopUp";
 
-const Modals = ({ togglePopup, isOpen, onSubmit }) => {
+const Modals = ({ togglePopup, isOpen, onSubmit}) => {
   return (
     <div>
       <button
