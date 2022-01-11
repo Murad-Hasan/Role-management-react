@@ -6,12 +6,29 @@ import UserSummary from "./UserSummary";
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [modalInfo, setModalInfo] = useState({
+    title: "Assign Role",
+    editUserId: "",
+    isEdit: false,
+  });
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
+  const assignRole = () => {
+    setModalInfo({
+      title: "Assign Role",
+      editUserId: null,
+      isEdit: false,
+    });
+    togglePopup();
+  };
+  
   const onSubmitAssignRole = (data) => {
-    setUsers([...users, data]);
+    let user = users.find((user) => user.id == data.id);
+    user.role = data.role;
+    let filteredUsers = users.filter((user) => user.id != data.id);
+    setUsers([...filteredUsers, user]);
   };
 
   useEffect(() => {
@@ -25,7 +42,12 @@ const UserList = () => {
 
   const editUserInfo = (e, user) => {
     if (e.target.id == "edit") {
-      console.log("edit", user.id);
+      setModalInfo({
+        title: "Edit User",
+        editUserId: user.id,
+        isEdit: true,
+      });
+      togglePopup();
     } else if (e.target.id == "delete") {
       deleteUser(e, user.id);
     }
@@ -44,6 +66,8 @@ const UserList = () => {
               onSubmit={onSubmitAssignRole}
               isOpen={isOpen}
               togglePopup={togglePopup}
+              modalInfo={modalInfo}
+              assignRole={assignRole}
             />
           </div>
         </div>

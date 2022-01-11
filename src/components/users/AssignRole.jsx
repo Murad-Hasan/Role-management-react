@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import getUserData from "../../services/users/UserData";
 import getRoleMasterData from "../../services/roles/RoleMasterData.js";
 
-const AssignRole = ({ togglePopup, onSubmit}) => {
+const AssignRole = ({ togglePopup, onSubmit, modalInfo }) => {
   const users = getUserData();
   const roles = getRoleMasterData();
 
   const [user, setUser] = useState("");
   const [role, setRole] = useState("");
+  const [editUser, setEditUser] = useState(null);
+
+  useEffect(() => {
+    if (modalInfo.isEdit) {
+      const user = users.find((user) => user.id == modalInfo.editUserId);
+      setEditUser(user);
+    }
+  }, []);
 
   const changeUser = (e) => {
     setUser(e.target.value);
@@ -18,21 +26,25 @@ const AssignRole = ({ togglePopup, onSubmit}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (user === "" || role == "") {
+    if (user === "" && role === "") {
       alert("Please select a user and role");
       return false;
     } else {
-      const userData = JSON.parse(user);
       const roleData = JSON.parse(role);
-      let data = {
-        id: Math.floor(Math.random() * 1000),
-        userName: userData.userName,
-        name: userData.name,
-        password: userData.password,
-        role: roleData.name,
-        email: userData.email,
-        gender: userData.gender,
-      };
+      let data;
+      if (editUser) {
+        data = {
+          id: editUser.id,
+          role: roleData.name,
+          editRole: true,
+        };
+      } else {
+        data = {
+          id: user,
+          role: roleData.name,
+          editRole: false
+        };
+      }
       onSubmit(data);
       togglePopup();
     }
@@ -40,32 +52,36 @@ const AssignRole = ({ togglePopup, onSubmit}) => {
   };
   return (
     <div className="text-black">
-      <h2>Assign Role</h2>
+      <h2>{modalInfo.title}</h2>
       <hr />
       <form className="py-3">
         <div className="flex flex-col gap-2.5 flex-wrap lg:flex-row justify-around">
           <div>
             <label className="text-black">
               <span className="text-black">Name: </span>
-              <select
-                value={user}
-                onChange={changeUser}
-                required
-                className="text-black border rounded-md outline-none border-slate-400 text-center"
-              >
-                <option value="Please Select a user">
-                  Please Select a user
-                </option>
-                {users.map((user, index) => {
-                  if (user.role === "" || user.role === null) {
-                    return (
-                      <option value={JSON.stringify(user)} key={index}>
-                        {user.name}
-                      </option>
-                    );
-                  }
-                })}
-              </select>
+              {editUser ? (
+                editUser.name
+              ) : (
+                <select
+                  value={user}
+                  onChange={changeUser}
+                  required
+                  className="text-black border rounded-md outline-none border-slate-400 text-center"
+                >
+                  <option value="Please Select a user">
+                    Please Select a user
+                  </option>
+                  {users.map((user, index) => {
+                    if (user.role === "" || user.role === null) {
+                      return (
+                        <option value={user.id} key={index}>
+                          {user.name}
+                        </option>
+                      );
+                    }
+                  })}
+                </select>
+              )}
             </label>
           </div>
           <div>
