@@ -23,10 +23,11 @@ const UserList = () => {
     });
     togglePopup();
   };
-  
+
   const onSubmitAssignRole = (data) => {
     let user = users.find((user) => user.id == data.id);
     user.role = data.role;
+
     let filteredUsers = users.filter((user) => user.id != data.id);
     setUsers([...filteredUsers, user]);
   };
